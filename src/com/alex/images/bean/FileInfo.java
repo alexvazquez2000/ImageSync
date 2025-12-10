@@ -92,4 +92,13 @@ public class FileInfo implements Serializable {
 		this.sha256 = sha256;
 	}
 
+	@Override
+	public String toString() {
+		return "FileInfo [fullName=" + fullName + "\n"
+				+ "\tfileName=" + fileName + "\n"
+				+ "\ttimestamp=" + timestamp + "\n"
+				+ "\tsize=" + size + "\n"
+				+ "\tsha256=" + sha256 + "]";
+	}
+
 }
