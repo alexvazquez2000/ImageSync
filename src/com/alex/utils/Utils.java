@@ -22,8 +22,7 @@ public class Utils {
 	/**
 	 * @param startDir
 	 * @param includeSha256
-	 * @return The returned hashMap key is the SHA256, but if includeSha256==false
-	 *         then key is the absolute path
+	 * @return The returned hashMap key is the absolute path
 	 */
 	public static Map<String, FileInfo> findFiles(String startDir, boolean includeSha256) {
 		HashMap<String, FileInfo> filesFound = new HashMap<>();
@@ -35,17 +34,14 @@ public class Utils {
 					FileInfo fileInfo = new FileInfo(f.getAbsolutePath(), f.getName(), f.length(), f.lastModified());
 					if (includeSha256) {
 						fileInfo.setSha256(getFileSHA256(f.getAbsolutePath()));
-						filesFound.put(fileInfo.getSha256(), fileInfo);
-					} else {
-						filesFound.put(f.getAbsolutePath(), fileInfo);
 					}
-
+					filesFound.put(f.getAbsolutePath(), fileInfo);
 				} else if (f.isDirectory()) {
 					filesFound.putAll(findFiles(f.getAbsolutePath(), includeSha256));
 				}
-//				if (filesFound.size() > 20 ) {
-//					break;
-//				}
+				if (filesFound.size() > 1020 ) {
+					break;
+				}
 			}
 		}
 		return filesFound;

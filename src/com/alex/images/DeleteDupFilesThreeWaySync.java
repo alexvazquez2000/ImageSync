@@ -40,6 +40,7 @@ public class DeleteDupFilesThreeWaySync {
 	
 	
 	private static void deleteFileOn(String deleteLocation, FileInfo archiveFile, Map<String, FileInfo> deleteOnDirFiles) throws IOException {
+		//FIXME: The key of the map is no longer the SHA256 -
 		if (deleteOnDirFiles.containsKey(archiveFile.getSha256()) ) {
 			FileInfo fileInfoToBeDeleted = deleteOnDirFiles.get(archiveFile.getSha256());
 			if (fileInfoToBeDeleted.getFileName().equals(archiveFile.getFileName() )) {
