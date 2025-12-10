@@ -3,6 +3,7 @@ package com.alex.images;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import com.alex.images.bean.FileInfo;
 import com.alex.utils.Utils;
@@ -49,8 +50,8 @@ public class CompareDirectories {
 		
 		if (dir2Files.size() > 0) {
 			//these files don't exist on the first directory
-			for (String key : dir2Files.keySet()) {
-				FileInfo archiveFile2 = dir2Files.get(key);
+			for (Entry<String, FileInfo> entry : dir2Files.entrySet()) {
+				FileInfo archiveFile2 = entry.getValue();
 				String relativeFileName = archiveFile2.getFullName().substring(dir2.length());
 				System.err.println(archiveFile2 + "\n only on second dir" + dir1 + relativeFileName );
 			}
